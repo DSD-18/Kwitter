@@ -38,16 +38,19 @@ window.location="index.html";
 
 function send(){
 msg=document.getElementById("msg").value;
+if(msg!=""){
 firebase.database().ref(room_name).push({
       name:user_name,message:msg,like:0
 });
 document.getElementById("msg").value="";
+
+}
 }
 function update_like(message_id){
       console.log("inside update_like"+message_id);
       likes=document.getElementById(message_id).value;
-      update_like= Number(likes)+1;
+      updatelike= Number(likes)+1;
       firebase.database().ref(room_name).child(message_id).update({
-            like:update_like
+            like:updatelike
       });
 }
